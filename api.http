@@ -1,0 +1,77 @@
+### 菜单列表
+GET http://localhost:8888/api/menu
+xtoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bRUCQYTDvjkR798RP5n2rWk-ElM0YhsNnhUyg057DVQ
+
+### 角色删除
+DELETE http://localhost:8888/api/role
+Content-Type: application/json
+xtoken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVSUQiOjEsImV4cCI6MTY4Nzk1MDE5Nn0.Z4WlFeS1qe6VCQ-FU_GHWAtRg12u1AL6DCbeTM8-ak0
+
+[
+  4
+]
+
+### 角色列表
+GET http://localhost:8888/api/role?page=1&limit=10
+xtoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bRUCQYTDvjkR798RP5n2rWk-ElM0YhsNnhUyg057DVQ
+
+### 角色新增or修改
+POST http://localhost:8888/api/role
+Content-Type: application/json
+xtoken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVSUQiOjEsImV4cCI6MTY4Nzk1MDE5Nn0.Z4WlFeS1qe6VCQ-FU_GHWAtRg12u1AL6DCbeTM8-ak0
+
+{
+  "id": 3,
+  "name": "产品3",
+  "menu_ids": [
+    1,
+    2
+  ]
+}
+
+### 用户删除
+DELETE http://localhost:8888/api/user
+Content-Type: application/json
+xtoken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVSUQiOjEsImV4cCI6MTY4Nzk1MDE5Nn0.Z4WlFeS1qe6VCQ-FU_GHWAtRg12u1AL6DCbeTM8-ak0
+
+[
+  4,
+  5,
+  6
+]
+
+### 用户新增or修改
+POST http://localhost:8888/api/user
+Content-Type: application/json
+xtoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bRUCQYTDvjkR798RP5n2rWk-ElM0YhsNnhUyg057DVQ
+
+{
+  "id": 2,
+  "username": "test",
+  "password": "test",
+  "role_ids": [
+    1,
+    2
+  ]
+}
+
+### 用户列表
+GET http://localhost:8888/api/user?page=1&limit=10
+xtoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bRUCQYTDvjkR798RP5n2rWk-ElM0YhsNnhUyg057DVQ
+
+### 当前用户信息
+GET http://localhost:8888/api/user/current
+xtoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bRUCQYTDvjkR798RP5n2rWk-ElM0YhsNnhUyg057DVQ
+
+
+### 登录
+POST http://localhost:8888/login
+Content-Type: application/json
+X-Request-Id: uuid
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+###

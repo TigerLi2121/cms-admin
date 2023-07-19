@@ -1,0 +1,60 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.14'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'java'
+    id 'com.google.cloud.tools.jib' version '3.3.1'
+}
+
+group 'com.mm'
+version '1.0'
+sourceCompatibility = '1.8'
+
+repositories {
+    maven { url "https://maven.aliyun.com/repository/public" }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'mysql:mysql-connector-java'
+    implementation 'cn.hutool:hutool-all:5.8.12'
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.3.1'
+    implementation 'io.micrometer:micrometer-registry-prometheus:1.10.4'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+bootJar {
+    archiveFileName = 'cms-admin.jar'
+}
+
+jib {
+    from {
+        image = "openjdk:8"
+    }
+    to {
+        image = "registry.cn-hangzhou.aliyuncs.com/anita/${project.getName()}"
+        tags = ["latest", "${project.version}"]
+        auth {
+            username = "83432087@qq.com"
+            password = "docker@root"
+        }
+    }
+    container {
+        jvmFlags = ['-Duser.timezone=Asia/Shanghai']
+        mainClass = "com.mm.App"
+    }
+}
