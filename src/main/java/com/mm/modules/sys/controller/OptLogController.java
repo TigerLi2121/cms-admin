@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  *
  * @author lwl
  */
-@RestPathController("/sys/log")
+@RestPathController("/opt_log")
 public class OptLogController {
     @Autowired
     private OptLogService optLogService;
@@ -37,7 +37,7 @@ public class OptLogController {
      * 列表
      */
     @GetMapping
-    public R.Page<List<OptLogEntity>> page(Integer page, Integer limit, String key) {
+    public R.Page<OptLogEntity> page(Integer page, Integer limit, String key) {
         LambdaQueryWrapper<OptLogEntity> qw = new LambdaQueryWrapper<>();
         qw.like(StrUtil.isNotBlank(key), OptLogEntity::getOperation, key);
         IPage<OptLogEntity> iPage = optLogService.page(new Page<>(page, limit), qw);

@@ -40,7 +40,7 @@ public class RoleController {
      * 角色列表
      */
     @GetMapping
-    public R.Page<List<RoleEntity>> list(Integer page, Integer limit) {
+    public R.Page<RoleEntity> list(Integer page, Integer limit) {
         if (Objects.isNull(page) || Objects.isNull(limit)) {
             List<RoleEntity> list = roleService.list();
             return R.ok(list, list.size());

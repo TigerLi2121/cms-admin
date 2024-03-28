@@ -61,11 +61,11 @@ public class R<T> {
         return r;
     }
 
-    public static <T> R.Page<List<T>> ok(List<T> list, Integer total) {
+    public static <T> R.Page<T> ok(List<T> list, Integer total) {
         return new Page<>(RCode.SUCCESS.getCode(), total, list);
     }
 
-    public static <T> R.Page<List<T>> ok(IPage<T> iPage) {
+    public static <T> R.Page<T> ok(IPage<T> iPage) {
         return new Page<>(RCode.SUCCESS.getCode(), iPage.getTotal(), iPage.getRecords());
     }
 
@@ -97,6 +97,6 @@ public class R<T> {
         /**
          * 数据
          */
-        private T data;
+        private List<T> data;
     }
 }

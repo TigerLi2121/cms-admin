@@ -77,7 +77,7 @@ public class UserController {
      * 列表
      */
     @GetMapping
-    public R.Page<List<UserEntity>> list(Integer page, Integer limit, String username) {
+    public R.Page<UserEntity> list(Integer page, Integer limit, String username) {
         LambdaQueryWrapper<UserEntity> qw = new LambdaQueryWrapper<>();
         qw.like(StrUtil.isNotBlank(username), UserEntity::getUsername, username);
         Page<UserEntity> iPage = userService.page(new Page<>(page, limit), qw);
